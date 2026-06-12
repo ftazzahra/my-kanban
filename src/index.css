@@ -1,0 +1,198 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #15164b;
+  background: white;
+}
+
+.navbar {
+  height: 64px;
+  padding: 0 70px;
+  background: #eff7ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand,
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  font-weight: bold;
+}
+
+.content {
+  padding: 32px 70px;
+}
+
+.toolbar {
+  display: grid;
+  grid-template-columns: 160px auto 1fr 150px;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.project-select,
+.search-box,
+.priority-filter,
+.tab {
+  height: 38px;
+  border: none;
+  border-radius: 999px;
+  background: #f4f8ff;
+  color: #211f60;
+  font-weight: bold;
+}
+
+.project-select {
+  padding: 0 16px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab {
+  padding: 0 14px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background: #21185d;
+  color: white;
+}
+
+.search-box,
+.priority-filter {
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+}
+
+.search-box input,
+.priority-filter select {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #211f60;
+  font-weight: bold;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.board.single-column {
+  grid-template-columns: 360px;
+}
+
+.column {
+  background: #f1f8ff;
+  border-radius: 18px;
+  padding: 16px;
+  min-height: 380px;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-header h3 {
+  font-size: 15px;
+}
+
+.add-btn {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.priority {
+  font-size: 10px;
+  font-weight: bold;
+  padding: 5px 9px;
+  border-radius: 999px;
+}
+
+.priority.high {
+  background: #ffe9ed;
+  color: #ff5e71;
+}
+
+.priority.medium {
+  background: #fff8cf;
+  color: #a78b00;
+}
+
+.priority.low {
+  background: #ddffdc;
+  color: #22a447;
+}
+
+.date {
+  font-size: 10px;
+  font-weight: bold;
+}
+
+.card h4 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.empty {
+  font-size: 13px;
+  color: #7782aa;
+}
+
+@media (max-width: 900px) {
+  .navbar,
+  .content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .toolbar {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .tabs {
+    overflow-x: auto;
+  }
+
+  .board,
+  .board.single-column {
+    grid-template-columns: 1fr;
+  }
+}
