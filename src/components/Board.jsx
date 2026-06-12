@@ -47,29 +47,33 @@ export default function Board() {
       : columns.filter((column) => column.id === activeStatus);
 
   return (
-    <div className="page">
-      <header className="navbar">
-        <div className="brand">
+    <div className="min-h-screen bg-white text-indigo-950 font-sans">
+      <header className="h-16 px-16 max-md:px-5 bg-blue-50 flex items-center justify-between">
+        <div className="flex items-center gap-7 font-bold">
           <Moon size={18} />
           <span>INDIGO</span>
         </div>
 
-        <nav className="nav-links">
-          <a>Project</a>
-          <a>People</a>
-          <a>Setting</a>
+        <nav className="flex items-center gap-7 font-bold">
+          <a className="cursor-pointer">Project</a>
+          <a className="cursor-pointer">People</a>
+          <a className="cursor-pointer">Setting</a>
         </nav>
       </header>
 
-      <main className="content">
-        <section className="toolbar">
-          <select className="project-select">
+      <main className="py-8 px-16 max-md:px-5">
+        <section className="flex flex-wrap items-center gap-3 mb-6">
+          <select className="w-40 h-10 px-4 border-none rounded-full bg-indigo-50/50 text-indigo-900 font-bold outline-none cursor-pointer">
             <option>BudJet</option>
           </select>
 
-          <div className="tabs">
+          <div className="flex gap-2 max-md:overflow-x-auto">
             <button
-              className={activeStatus === "all" ? "tab active" : "tab"}
+              className={`h-10 px-4 border-none rounded-full font-bold cursor-pointer outline-none whitespace-nowrap ${
+                activeStatus === "all"
+                  ? "bg-indigo-950 text-white"
+                  : "bg-indigo-50/50 text-indigo-900"
+              }`}
               onClick={() => setActiveStatus("all")}
             >
               All
@@ -78,7 +82,11 @@ export default function Board() {
             {columns.map((column) => (
               <button
                 key={column.id}
-                className={activeStatus === column.id ? "tab active" : "tab"}
+                className={`h-10 px-4 border-none rounded-full font-bold cursor-pointer outline-none whitespace-nowrap ${
+                  activeStatus === column.id
+                    ? "bg-indigo-950 text-white"
+                    : "bg-indigo-50/50 text-indigo-900"
+                }`}
                 onClick={() => setActiveStatus(column.id)}
               >
                 {column.icon} {column.title}
@@ -86,21 +94,23 @@ export default function Board() {
             ))}
           </div>
 
-          <div className="search-box">
+          <div className="flex-1 h-10 px-3 flex items-center border-none rounded-full bg-indigo-50/50 text-indigo-900 font-bold">
             <input
               type="text"
               placeholder="Search task..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
+              className="w-full border-none outline-none bg-transparent text-indigo-900 font-bold placeholder-indigo-900/50"
             />
-            <Search size={18} />
+            <Search size={18} className="text-indigo-900" />
           </div>
 
-          <div className="priority-filter">
-            <SlidersHorizontal size={15} />
+          <div className="w-40 h-10 px-3 flex items-center border-none rounded-full bg-indigo-50/50 text-indigo-900 font-bold gap-2">
+            <SlidersHorizontal size={15} className="text-indigo-900 shrink-0" />
             <select
               value={priorityFilter}
               onChange={(e) => setPriorityFilter(e.target.value)}
+              className="w-full border-none outline-none bg-transparent text-indigo-900 font-bold cursor-pointer"
             >
               <option value="all">All Priority</option>
               <option value="high">High</option>
@@ -110,7 +120,11 @@ export default function Board() {
           </div>
         </section>
 
-        <section className={`board ${activeStatus !== "all" ? "single-column" : ""}`}>
+        <section
+          className={`grid gap-4 max-md:grid-cols-1 ${
+            activeStatus !== "all" ? "grid-cols-1 max-w-sm" : "grid-cols-4"
+          }`}
+        >
           {visibleColumns.map((column) => (
             <Column
               key={column.id}
